@@ -1,78 +1,77 @@
 # -*- coding: utf-8 -*-
 """
-Serial_test.py
-
-Sends commands to Arduino Uno via serial port to control a drone
-using the nRF24L01 wireless boards.
-
-The arrow keys control elevator and aileron (forward/reverse and left/right)
-and the w,s keys control throttle, and the a,d, keys control the rudder (yaw)
-
-This uses the msvcrt library, so it only works under Windows. 
-
-Created on Sun Feb 21 00:17:38 2016
-
-@author: perrytsao
+This version doesn't use the msvrct library. It is compatible to linux
 """
-import serial, time, msvcrt
+import pygame, serial, time
 
-throttle=1000
-aileron=1500
-elevator=1500
-rudder=1500  #yaw, rotates the drone
 
-tg=10
-ag=50
-eg=50
-rg=50
-try:
-    arduino=serial.Serial('COM6', 115200, timeout=.01)
-    time.sleep(1) #give the connection a second to settle
-    #arduino.write("1500, 1500, 1500, 1500\n")
-    while True:
-        data = arduino.readline()
-        if data:
-            #String responses from Arduino Uno are prefaced with [AU]
-            print "[AU]: "+data 
-            
-        if msvcrt.kbhit():
-            print "a"
-            key = ord(msvcrt.getch())
-            if key == 27: #ESC
-                print "[PC]: ESC exiting"
-                break
-            elif key == 13: #Enter
-                #select()
-                print "[PC]: Enter"
-            elif key == 119: #w
-                throttle+=tg
-            elif key == 97: #a
-                rudder-=rg         
-            elif key == 115: #s
-                throttle-=tg
-            elif key == 100: #d
-                rudder+=rg
-            elif key == 224: #Special keys (arrows, f keys, ins, del, etc.)
-                key = ord(msvcrt.getch())
-                if key == 80: #Down arrow
-                    elevator-=eg
-                elif key == 72: #Up arrow
-                    elevator+=eg
-                elif key == 77: #right arroww
-                    aileron+=ag
-                elif key == 75: #left arrow
-                    aileron-=ag               
-            
-            command="%i,%i,%i,%i"% (throttle, aileron, elevator, rudder)
-            # string commands to the Arduino are prefaced with  [PC]           
-            print "[PC]: "+command 
-            arduino.write(command+"\n")
+def main():
+    pygame.init()
+    throttle=1000
+    aileron=1500
+    elevator=1500
+    rudder=1500  #yaw, rotates the drone
 
-finally:
-    # close the connection
-    arduino.close()
-    # re-open the serial port which will also reset the Arduino Uno and
-    # this forces the quadcopter to power off when the radio loses conection. 
-    arduino=serial.Serial('COM6', 115200, timeout=.01)  #We use the port COM6 and a data rate of 115200 bits per seconds
-    arduino.close()
-    # close it again so it can be reopened the next time it is run.  
+    tg=10
+    ag=50
+    eg=50
+    rg=50
+    screen=pygame.display.set_mode((300,100))
+    try:
+        arduino=serial.Serial('/dev/ttyACM0', 115200, timeout=.01)
+        time.sleep(1) #give the connection a second to settle
+        arduino.write("1500, 1500, 1500, 1500\n")
+        while True:
+            data = arduino.readline()
+            if data:
+                #String responses from Arduino Uno are prefaced with [AU]
+                print "[AU]: "+data 
+        
+            for event in pygame.event.get():
+                 if event.type == pygame.QUIT:
+                     return("fin")
+    
+     
+        # User pressed down on a key
+                 if event.type == pygame.KEYDOWN:
+                     if event.key == pygame.K_ESCAPE:
+                         print "[PC]: ESC exiting"
+                         return()
+                     elif event.key ==pygame.K_RETURN:
+                         print "[PC]: Enter"
+                     elif event.key == pygame.K_w:
+                         throttle+=tg
+                     elif event.key == pygame.K_a:
+                         rudder-=rg         
+                     elif event.key == pygame.K_s:
+                         throttle-=tg
+                     elif event.key == pygame.K_d:
+                         rudder+=rg
+                     elif event.key== pygame.K_DOWN:
+                         elevator-=eg
+                     elif event.key== pygame.K_UP:
+                         elevator+=eg
+                     elif event.key== pygame.K_RIGHT:
+                         aileron+=ag
+                     elif event.key== pygame.K_LEFT:
+                         aileron-=ag
+                 command="%i,%i,%i,%i"% (throttle, aileron, elevator, rudder)
+                 # string commands to the Arduino are prefaced with  [PC]           
+                 print "[PC]: "+command 
+                 arduino.write(command+"\n")
+               
+                     
+                         
+    finally:
+        # close the connection
+        arduino.close()
+        # re-open the serial port which will also reset the Arduino Uno and
+        # this forces the quadcopter to power off when the radio loses conection. 
+        arduino=serial.Serial('/dev/ttyACM0', 115200, timeout=.01)  #We use the port COM6 and a data rate of 115200 bits per seconds
+        arduino.close()
+        # close it again so it can be reopened the next time it is run.  
+                            
+
+main()
+pygame.display.quit
+pygame.quit()
