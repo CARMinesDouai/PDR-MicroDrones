@@ -2,7 +2,7 @@
 #include "nRF24L01.h"
 #include "RF24.h"
 
-int comp = 0;
+int compt = 0;
 
 RF24 radio(5, A1); //pin used for CE/CSN
 
