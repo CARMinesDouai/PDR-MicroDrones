@@ -11,7 +11,7 @@
  fly the drone. 
  
  This code can be easily adapted to the other mini-drones 
- that the Multi-protocol board supports. 
+ that the Multi-protocol board supports. /
 
  The format for the serial command is:
  ch1value,ch2value,ch3value,...
@@ -206,7 +206,7 @@ void loop()
         Serial.println("init protocol complete.");
     }
     // process protocol
-    Serial.println("processing protocol.");
+    //Serial.println("processing protocol.");
     switch(current_protocol) {
         case PROTO_CG023: 
         case PROTO_YD829:
@@ -331,11 +331,11 @@ void selectProtocol()
     set_txid(true);                      // Renew Transmitter ID
     
     // protocol selection
-    /*
+    
     // Rudder right + Aileron left
     if(ppm[RUDDER] > PPM_MAX_COMMAND && ppm[AILERON] < PPM_MIN_COMMAND)
         current_protocol = PROTO_H8_3D; // H8 mini 3D, H20 ...
-    
+    /*
     // Elevator down + Aileron right
     else if(ppm[ELEVATOR] < PPM_MIN_COMMAND && ppm[AILERON] > PPM_MAX_COMMAND)
         current_protocol = PROTO_YD829; // YD-829, YD-829C, YD-822 ...
@@ -363,7 +363,7 @@ void selectProtocol()
     // Aileron right
     else if(ppm[AILERON] > PPM_MAX_COMMAND)  
     */
-    current_protocol = PROTO_H8_3D;  // using for our first drone (JJRC H20) 
+    //current_protocol = PROTO_H8_3D;  // using for our first drone (JJRC H20) 
     /*
     // Aileron left
     else if(ppm[AILERON] < PPM_MIN_COMMAND)  
@@ -434,6 +434,5 @@ void update_ppm()
     }    
 }
 */
-
 
 
