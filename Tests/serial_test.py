@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """
+Code adapted from the file serial_test of perrytsao
 This version doesn't use the msvrct library. It is compatible to linux
 """
 import pygame, serial, time
@@ -18,7 +19,7 @@ def main():
     rg=50
     screen=pygame.display.set_mode((300,100))
     try:
-        arduino=serial.Serial('/dev/ttyACM0', 115200, timeout=.01)
+        arduino=serial.Serial('/dev/ttyACM0', 115200, timeout=.01) #We use the port /dev/ttyACM0 and a data rate of 115200 bits per seconds
         time.sleep(1) #give the connection a second to settle
         arduino.write("1500, 1500, 1500, 1500\n")
         while True:
@@ -67,7 +68,7 @@ def main():
         arduino.close()
         # re-open the serial port which will also reset the Arduino Uno and
         # this forces the quadcopter to power off when the radio loses conection. 
-        arduino=serial.Serial('/dev/ttyACM0', 115200, timeout=.01)  #We use the port COM6 and a data rate of 115200 bits per seconds
+        arduino=serial.Serial('/dev/ttyACM0', 115200, timeout=.01)  #We use the port /dev/ttyACM0 and a data rate of 115200 bits per seconds
         arduino.close()
         # close it again so it can be reopened the next time it is run.  
                             
