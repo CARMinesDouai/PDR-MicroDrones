@@ -1,9 +1,16 @@
 # PDR-MicroDrones
 
+    This is a project leaded by students from IMT Lille Douai, France.
+    
+    The goal of this project is to autopilot a drone so it can reach a target all by itself.
+    You can find on this repository many directories sort by year. 
+    A directory 20XX coresponds to the work of IMT students on year 20XX.
+
 ## Set up
     Python 2.7 with openCV, libfreenect, and pygame
     Arduino 1.8.5
     Arduino Uno board
+    nRF24 transmitter / receiver
     Camera Kinect 1 with drivers installed
 
 
@@ -11,17 +18,6 @@
     JJRC H20 with color patches
 
 
-## How to launch the drone controller
-    open Arduino IDE
-    sudo chmod a+rw /dev/ttyACM0
-    upload the code to the arduino
-    execute the file track_drone.py
-    plug in the battery
-    reset the arduino board
-    click on the pygame window
-    press Enter to start the autopilot. It is set to the center of the screen by default
-    place a green patch on the ground and press u to set it as a target, and press enter
-    You can control the drone, great job!
     
 
 
