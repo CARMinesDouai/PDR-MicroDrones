@@ -1,0 +1,9 @@
+track_drone.py est un programme python
+	-il ouvre la camera kinect
+	-lancer une communicaton entre l'arduino et le drone
+	-repère à l'image la position de la cible (pastille verte)
+	-repère à l'image la position du drone (quatre pastilles bleues IMT)
+
+Une serie de touches clavier servent de commande sur le drone : voir dans le code
+
+auteur : promo 2019 

@@ -1,0 +1,25 @@
+liste de commande à réaliser pour installer les paquets necessaires pour le PDR
+
+sudo apt update
+sudo apt install opencv
+sudo apt install libopencv-dev
+sudo apt install libfreenect-dev
+sudo apt install libfreenect-bin
+sudo apt install python
+sudo apt install python-pip
+pip install libfreenect-dev
+pip install numpy
+pip install opencv-python
+sudo apt install cython
+sudo apt install python-dev
+sudo apt install python-numpy
+
+#telecharger le repository git de libfreenect et se placer dans le dossier wrappers/python
+
+sudo python setup.py install
+
+#test : sudo freenect-glview
+
+#dans etc/environment ajouter la ligne : QT_X11_NO_MITSHM=1
+
+sudo apt install arduino

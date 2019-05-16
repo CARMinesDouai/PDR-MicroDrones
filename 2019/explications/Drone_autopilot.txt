@@ -1,0 +1,4 @@
+Drone_autopilot est un fichier python
+le drone, repéré par les quatre marqueurs bleus, est identifié par la camera ainsi que la pastille verte servant de cible
+Il faut d'abord que la carte se connecte au drone
+lors du lancemet du programme, le drone s'aligne dans un premier temps avec sa cible puis, il avance jusqu'a l'ateindre

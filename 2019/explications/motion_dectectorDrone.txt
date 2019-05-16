@@ -1,0 +1,2 @@
+motion_dectectorDrone.py est un programme python.
+Il detecte grace à la camera kinect, les objets en mouvement dans un environnement fixe.

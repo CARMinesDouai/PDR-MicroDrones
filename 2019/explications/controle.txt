@@ -1,0 +1,2 @@
+controle.py est un programme python
+Il permet de controller le drone grace au clavier de l'ordinateur

@@ -1,0 +1,2 @@
+Le dossier nRF24_multipro contient l'ensemble des fichiers à uploader sur l'arduino afin de pourvoir controller le drone depuis un PC.
+Il faut penser à décommenter, dans le fichier nRF24_multipro.ino, la ligne correspondant au drone utilisé dans l'experience ; par exemple : pour un drone JJRC H20, décommenter la ligne 336

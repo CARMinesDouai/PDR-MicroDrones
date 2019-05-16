@@ -1,0 +1,3 @@
+choose mask.py est un programme python permettant d'appliquer des filtres sur l'image de la camera kinect
+afin d'isoler les pastilles de couleur.
+auteur : promo 2019

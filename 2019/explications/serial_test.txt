@@ -1,0 +1,3 @@
+serial_test.py est un programme python
+il sert à tester la communication d'un radio-transmetteur sur arduino avec un radio-receveur sur arduino.
+les programmes arduino doivent etre uploadés sur la carte
